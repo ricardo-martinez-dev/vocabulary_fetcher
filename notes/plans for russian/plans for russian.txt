@@ -1,0 +1,59 @@
+// https://www.russianpod101.com/russian-vocabulary-lists/
+
+// todo : scroll till the bottom of the page
+
+// todo : get name of every topic
+
+// todo : scrape page "https://www.russianpod101.com/russian-vocabulary-lists/" + topic
+
+// todo : save in db
+
+function scrape() {
+  let res = [];
+
+  const elems = document.querySelectorAll(
+    ".DetailsBar__words_border_ddc3 .DefaultWord__box_3736 .DefaultWord__word_line_4259"
+  );
+
+  elems.forEach((el) => {
+    let obj = {};
+
+    const eng = el.querySelector(
+      ".DefaultWord__word_english_d916.DefaultWord__vertical_margin_49ed"
+    );
+
+    const rus = el.querySelector(
+      ".DefaultWord__main_content_9f82 > div.DefaultWord__headings_293f > div:nth-child(2) > div"
+    );
+
+    const phon = el.querySelector(".DefaultWord__word_h1_8ce4");
+    const gender = el.querySelector(
+      ".DefaultWord__extra_dd98.DefaultWord__vertical_margin_49ed > div:nth-child(1)"
+    );
+    const gramGroup = el.querySelector(
+      ".DefaultWord__extra_dd98.DefaultWord__vertical_margin_49ed > div:nth-child(2)"
+    );
+
+    if (eng) obj.eng = eng.innerText;
+    if (rus) obj.rus = rus.innerText;
+    if (phon) obj.phon = phon.innerText;
+    if (gender) {
+      obj.gender =
+        gender.innerText === "feminine"
+          ? "f"
+          : gender.innerText === "masculine"
+          ? "m"
+          : gender.innerText;
+    }
+    if (gramGroup)
+      obj.gramGroup = gramGroup.innerText.replace("(", "").replace(")", "");
+
+    res.push(obj);
+  });
+
+  return res;
+}
+
+const res = scrape();
+
+console.log(res);
