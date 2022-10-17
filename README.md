@@ -1,6 +1,9 @@
 # Vocabulary Fetcher
 Scrape Collins Dictionary and get the result of multiple words at once
 
+### NOTE!
+- this project is for educational purpose only! Downloading copyright material is illegal.
+
 ### Features
 - scrape 6 languages : English, French , German, Italian, Spanish and Portuguese
 - speed up your search
