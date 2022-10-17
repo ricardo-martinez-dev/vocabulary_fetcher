@@ -1,5 +1,5 @@
 # Vocabulary Fetcher
-Scrape Collins Dictionaty and get the result of multiple words at once
+Scrape Collins Dictionary and get the result of multiple words at once
 
 ### Features
 - scrape 6 languages : English, French , German, Italian, Spanish and Portuguese
